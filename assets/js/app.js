@@ -147,3 +147,67 @@ function wishlist(element){
   element.classList.toggle("fa-regular")
 
 }
+
+// Array of Chef's Tricks & Tips
+const chefsTips = [
+    {
+        title: "Perfectly Cooked Steak",
+        text: "Let your steak rest after cooking to keep it juicy and flavorful.",
+        img: "https://freedesignfile.com/upload/2018/07/Cartoon-cooking-chef-vector.jpg"
+    },
+    {
+        title: "Fresh Herbs Trick",
+        text: "Store herbs in a glass of water to keep them fresh longer.",
+        img: "https://i.pinimg.com/736x/65/f2/f4/65f2f46b091b61362d8bc472bc82cccb.jpg"
+    },
+    {
+        title: "Boost Flavor with Spices",
+        text: "Toast your spices before using them for a richer taste.",
+        img: "https://i.pinimg.com/736x/75/b5/6b/75b56b4612d3591ed1d865f4221cc7de.jpg"
+    },
+    {
+        title: "Crispy French Fries",
+        text: "Soak cut potatoes in cold water before frying to get crispy fries.",
+        img: "https://i.pinimg.com/736x/d0/b2/51/d0b25196d4fdd14b4c36b764daf25c2c.jpg"
+    },
+    {
+        title: "Keep Avocados Fresh",
+        text: "Store cut avocados with onions to prevent browning.",
+        img: "https://i.pinimg.com/736x/79/25/d0/7925d07f79d11e0ec080e7f3e4f932b8.jpg"
+    },
+    {
+        title: "Perfectly Boiled Eggs",
+        text: "Add a pinch of salt to the water to make peeling boiled eggs easier.",
+        img: "https://i.pinimg.com/736x/5d/87/59/5d8759010fbf2519eca9d311fe0edc47.jpg"
+    },
+    {
+        title: "Fluffy Pancakes",
+        text: "Let the batter rest for 10 minutes before cooking for fluffier pancakes.",
+        img: "https://i.pinimg.com/736x/d0/ea/f5/d0eaf57a13ce78c057baa91a96210ffa.jpg"
+    }
+];
+
+// Function to Display 3 Random Tips
+function displayRandomTips() {
+    const container = document.getElementById("chefsTipsContainer");
+    container.innerHTML = ""; // Clear existing tips
+
+    // Shuffle and pick 3 random tips
+    const shuffledTips = chefsTips.sort(() => 0.5 - Math.random()).slice(0, 3);
+console.log(shuffledTips)
+    shuffledTips.forEach(tip => {
+        const tipCard = document.createElement("div");
+        tipCard.classList.add("chefs-tip-card");
+        tipCard.innerHTML = `
+            <img src="${tip.img}" alt="Chef Tip">
+            <div class="chefs-tip-content">
+                <h3>${tip.title}</h3>
+                <p>${tip.text}</p>
+            </div>
+        `;
+        container.appendChild(tipCard);
+    });
+}
+
+// Run the function on page load
+window.onload = displayRandomTips;
